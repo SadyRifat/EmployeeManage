@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace MovieManage.Controllers
+namespace EmployeeManage.Controllers
 {
+
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

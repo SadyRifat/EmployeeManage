@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<div class="container mt-4">
+    <h2>Employee List</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3">Add Employee</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Actions</th>
+                <!-- Add more columns as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.EmployeeID</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.Email</td>
+                    <td>@employee.Department.DepartmentName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@employee.EmployeeID" class="btn btn-info btn-sm">Edit</a>
+                        <!-- Add more action buttons as needed -->
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
