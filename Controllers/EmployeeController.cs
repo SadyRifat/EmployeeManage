@@ -58,10 +58,7 @@ namespace EmployeeManage.Controllers
         [HttpPost]
         public IActionResult Edit(int id, Employee employee)
         {
-            if (id != employee.EmployeeID)
-            {
-                return NotFound();
-            }
+            employee.EmployeeID = id;
 
             _employeeService.UpdateEmployee(employee);
             return RedirectToAction("Index", "Employee");
@@ -73,5 +70,29 @@ namespace EmployeeManage.Controllers
             //ViewBag.Departments = _departmentService.GetAllDepartments();
             //return View(employee);
         }
+
+        [HttpGet]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var employee = _employeeService.GetEmployeeById(id);
+
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            _employeeService.DeleteEmployee(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }
+
+
+// Build Tool
+// Build Machanism
+// How to dockarize
+// Token Based Auth [SOAP/REST Guideline]
+// Profiling
+// SSO
